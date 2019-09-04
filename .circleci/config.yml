@@ -10,4 +10,4 @@ jobs:
             command: "sudo pip install scikit-image"
          - run:
             name: "Run conversion"
-            command: "python conver.py"
+            command: "python convert.py"

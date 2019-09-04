@@ -4,7 +4,10 @@ jobs:
       docker:
         - image: circleci/python:3.7.1
       steps:
-        - checkout
-        - run:
-           name: "Run some shit"
-           command: "ls -l"
+         - checkout
+         - run:
+            name: "Install dependency"
+            command: "sudo pip install scikit-image"
+         - run:
+            name: "Run conversion"
+            command: "python conver.py"

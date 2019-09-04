@@ -3,6 +3,7 @@ jobs:
    build:
       docker:
         - image: circleci/python:3.7.1
+      working_directory: ~/work
       steps:
          - checkout
          - run:
@@ -11,3 +12,5 @@ jobs:
          - run:
             name: "Run conversion"
             command: "python convert.py"
+         - store_artifacts:
+            path: ~/work

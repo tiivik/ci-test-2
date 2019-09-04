@@ -1,16 +1,22 @@
-version: 2
-jobs:
-   build:
-      docker:
-        - image: circleci/python:3.7.1
-      working_directory: ~/work
-      steps:
-         - checkout
-         - run:
-            name: "Install dependency"
-            command: "sudo pip install scikit-image"
-         - run:
-            name: "Run conversion"
-            command: "python convert.py"
-         - store_artifacts:
-            path: ~/work
+workflow:
+   version: 2
+   jobs:
+      build:
+         docker:
+         - image: circleci/python:3.7.1
+         working_directory: ~/work
+         steps:
+            - checkout
+            - run:
+               name: "Install dependency"
+               command: "sudo pip install scikit-image"
+            - run:
+               name: "Run conversion"
+               command: "python convert.py"
+            - store_artifacts:
+               path: ~/work
+         filters:
+            branches:
+              only:
+                - develop
+                - /feature.*/
